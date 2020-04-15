@@ -57,179 +57,246 @@ html {
 	@media only screen and (max-width: @break-mobile) {
 		font-size: 40%;
 	}
-	body {
-		background-color: @bg-color_body;
-	}
+}
 
-	//NAVBAR
-	.show-navbar {
-		visibility: visible;
-		opacity: 1;
-	}
+body {
+	background-color: @bg-color_body;
+}
 
-	nav {
-		visibility: hidden;
-		opacity: 0;
-		transition: all 0.5s ease;
-		width: 100vw;
-		position: fixed;
-		z-index: 100;
-		background: @bg-color_navbar;
-		top: 0px;
+//NAVBAR
+.show-navbar {
+	visibility: visible;
+	opacity: 1;
+}
 
-		ul {
-			.flex-row();
-			justify-content: space-around;
+nav {
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.5s ease;
+	width: 100vw;
+	position: fixed;
+	z-index: 100;
+	background: @bg-color_navbar;
+	top: 0px;
 
-			li {
-				margin: 12px 0;
+	ul {
+		.flex-row();
+		justify-content: space-around;
 
-				a {
-					text-decoration: none;
-					font-size: 3rem;
-					color: @color-text;
-				}
+		li {
+			margin: 12px 0;
+
+			a {
+				text-decoration: none;
+				font-size: 3rem;
+				color: @color-text;
 			}
 		}
 	}
+}
 
-	//CONTAINER
+//CONTAINER
 
-	.container {
-		.flex-col();
+.container {
+	.flex-col();
+	align-items: center;
+	margin: 10px auto;
+	padding: 1%;
+	width: 90%;
+	border-radius: 4px;
+	background-color: @bg-color_container;
+	color: @color-text;
+
+	header {
+		.flex-row();
+		width: 100%;
+		justify-content: space-between;
 		align-items: center;
-		margin: 10px auto;
-		padding: 1%;
-		width: 90%;
-		border-radius: 4px;
-		background-color: @bg-color_container;
-		color: @color-text;
+		.marg-bot();
 
-		header {
-			.flex-row();
-			width: 85%;
-			justify-content: space-between;
+		.pic00 {
+			margin: 2%;
+			width: 50%;
+			.flex-col();
 			align-items: center;
-			.marg-bot();
-
-			.pic00 {
-				margin: 2%;
-				.flex-col();
-				align-items: center;
-				justify-content: left;
-				img {
-					height: auto;
-					max-width: 90%;
-					min-width: 80%;
-					box-shadow: -7px -7px 14px -1px rgba(0, 0, 0, 0.4);
-					border-radius: 50%;
-				}
-			}
-			.header-text {
-				.flex-col();
-				justify-content: flex-start;
-
-				h1 {
-					.h1-6();
-					font-size: 8rem;
-				}
-
-				h2 {
-					.h1-6();
-					font-size: 4rem;
-				}
-			}
-			@media only screen and (max-width: @break-tablet) {
-				.flex-col();
+			justify-content: left;
+			img {
+				// height: auto;
+				max-width: 80%;
+				min-width: 70%;
+				box-shadow: -7px -7px 14px -1px rgba(0, 0, 0, 0.4);
+				border-radius: 50%;
 			}
 		}
+		.header-text {
+			.flex-col();
+			width: 50%;
+			justify-content: flex-start;
 
-		//MIDDLE SECTION
-
-		#middle-section {
-			.flex-row();
-			align-items: flex-end;
-			.marg-bot();
-
-			.about {
-				width: 45%;
-				margin-left: 5%;
-				align-self: center;
-				h3 {
-					.h1-6();
-					font-size: 3rem;
-				}
-
-				p {
-					font-size: 2rem;
-					text-align: justify;
-				}
+			h1 {
+				.h1-6();
+				font-size: 8rem;
 			}
-			.stuff-good {
-				width: 45%;
-				margin-left: 5%;
-				margin-right: 5%;
-				font-size: 2rem;
-				table-layout: fixed;
 
-				table {
-					.table();
-
-					td,
-					th {
-						text-align: center;
-					}
-
-					th {
-						font-size: 3rem;
-					}
-				}
-			}
-		}
-
-		//BLOCK QUOTE
-		.quote {
-			background-color: @bg-color_body;
-			color: white;
-			text-align: center;
-			padding: 2rem 0;
-			blockquote {
-				width: 75%;
+			h2 {
+				.h1-6();
 				font-size: 4rem;
-				margin: 0 auto 2rem auto;
-			}
-			cite {
-				font-size: 2rem;
 			}
 		}
+		@media only screen and (max-width: @break-tablet) {
+			.flex-col();
+		}
+	}
 
-		//WORK HISTORY
+	//MIDDLE SECTION
 
-		#work-history {
-			font-size: 2rem;
-			margin: 3rem 0;
-			width: 85%;
-			table-layout: fixed;
-			.marg-bot();
+	#middle-section {
+		.flex-row();
+		align-items: flex-end;
+		justify-content: space-between;
+		width: 100%;
+		.marg-bot();
 
+		.about {
+			width: 45%;
+			margin-left: 5%;
+			margin-right: 5%;
+			align-self: center;
 			h3 {
 				.h1-6();
 				font-size: 3rem;
 			}
 
-			table {
-				.table();
+			p {
+				font-size: 2rem;
+				text-align: justify;
 			}
 		}
+		.stuff-good {
+			width: 45%;
+			margin-left: 5%;
+			margin-right: 5%;
+			font-size: 2rem;
+			table-layout: fixed;
 
-		footer {
-			background-color: @bg-color_footer;
-			color: white;
-			text-align: center;
-			width: 100%;
-			padding: 5vh 0;
-			margin: 0;
+			table {
+				.table();
+
+				td,
+				th {
+					text-align: center;
+				}
+
+				th {
+					font-size: 3rem;
+				}
+			}
+		}
+		@media only screen and (max-width: @break-tablet) {
+			.flex-col();
+			align-items: center;
+
+			.about,
+			.stuff-good {
+				width: 90%;
+				margin-bottom: 5%;
+			}
+		}
+	}
+	//BLOCK QUOTE
+	.quote {
+		background-color: @bg-color_body;
+		color: white;
+		text-align: center;
+		width: 85%;
+		padding: 2rem 0;
+		blockquote {
+			width: 75%;
+			font-size: 4rem;
+			margin: 0 auto 2rem auto;
+		}
+		cite {
 			font-size: 2rem;
 		}
+	}
+
+	//WORK HISTORY
+
+	#work-history {
+		font-size: 2rem;
+		margin: 3rem 0;
+		width: 85%;
+		table-layout: fixed;
+		.marg-bot();
+
+		h3 {
+			.h1-6();
+			font-size: 3rem;
+		}
+
+		table {
+			.table();
+		}
+	}
+
+	// CONTACT FORM
+	#contact {
+		.flex-col();
+		.marg-bot();
+		align-items: center;
+		padding: 2rem 0;
+		background-color: @bg-color_navbar;
+		width: 85%;
+		form {
+			.flex-col();
+			align-items: stretch;
+			width: 85%;
+
+			input[type='text'],
+			input[type='email'],
+			select,
+			textarea {
+				display: block;
+				width: 100%;
+				padding: 12px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				box-sizing: border-box;
+				margin-top: 6px;
+				margin-bottom: 16px;
+				resize: vertical;
+			}
+
+			input[type='submit'] {
+				background-color: @bg-color_body;
+				color: white;
+				font-size: 2rem;
+				width: 50%;
+				margin: 0 auto;
+				padding: 12px 20px;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+
+			label {
+				font-size: 2rem;
+			}
+		}
+	}
+
+	// FOOTER
+	footer {
+		background-color: @bg-color_footer;
+		color: white;
+		text-align: center;
+		width: 100%;
+		padding: 5vh 0;
+		margin: 0;
+		font-size: 2rem;
+	}
+
+	@media only screen and (max-width: @break-tablet) {
+		width: 100%;
 	}
 }
