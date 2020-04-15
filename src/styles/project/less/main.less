@@ -1,18 +1,29 @@
+//FONTS
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&display=swap');
+
 //Variables
 ///////////
 
 //Colors
 @bg-color_body: rgb(3, 18, 24);
 @bg-color_container: rgb(255, 255, 255);
-@bg-color_navbar: rgb(221, 230, 233);
-@bg-color_footer: rgb(50, 107, 145);
+@bg-color_navbar: rgb(187, 193, 196);
+@bg-color_footer: rgb(90, 88, 95);
+@bg-tables: rgb(70, 70, 70);
 
 @color-navbar_links: rgb(234, 234, 241);
 @color-text: rgb(5, 8, 36);
 
 //Sizing
 .marg-bot() {
-	margin-bottom: 3rem;
+	margin-bottom: 15rem;
+
+	@media only screen and (max-width: @break-tablet) {
+		margin-bottom: 8rem;
+	}
+	@media only screen and (max-width: @break-mobile) {
+		margin-bottom: 4rem;
+	}
 }
 
 //Mixins
@@ -29,18 +40,20 @@
 }
 
 .table() {
+	border: 3px solid @bg-tables;
 	border-collapse: collapse;
 	width: 100%;
 	word-break: break-word;
 
 	td,
 	th {
-		border: 1px solid @color-text;
+		border: none;
 		text-align: left;
 		padding: 8px;
 	}
 	tr:nth-child(even) {
-		background-color: #cad7e9;
+		background-color: @bg-tables;
+		color: white;
 	}
 }
 
@@ -50,6 +63,7 @@
 
 html {
 	font-size: 62.5%;
+	font-family: 'Merriweather Sans', sans-serif;
 	@media only screen and (max-width: @break-tablet) {
 		font-size: 50%;
 	}
@@ -57,6 +71,16 @@ html {
 	@media only screen and (max-width: @break-mobile) {
 		font-size: 40%;
 	}
+}
+
+.uitooltip {
+	padding: 12px;
+	font-size: 2rem;
+	background: black;
+	color: white;
+	position: absolute;
+	box-shadow: 3px 3px 5px #aaa;
+	border-radius: 8px;
 }
 
 body {
@@ -73,11 +97,12 @@ nav {
 	visibility: hidden;
 	opacity: 0;
 	transition: all 0.5s ease;
-	width: 100vw;
+	width: 90vw;
 	position: fixed;
 	z-index: 100;
 	background: @bg-color_navbar;
 	top: 0px;
+	left: 5%;
 
 	ul {
 		.flex-row();
@@ -92,6 +117,10 @@ nav {
 				color: @color-text;
 			}
 		}
+	}
+	@media only screen and (max-width: @break-tablet) {
+		width: 100vw;
+		left: 0;
 	}
 }
 
@@ -120,6 +149,7 @@ nav {
 			.flex-col();
 			align-items: center;
 			justify-content: left;
+
 			img {
 				// height: auto;
 				max-width: 80%;
@@ -127,7 +157,12 @@ nav {
 				box-shadow: -7px -7px 14px -1px rgba(0, 0, 0, 0.4);
 				border-radius: 50%;
 			}
+
+			@media only screen and (max-width: @break-tablet) {
+				width: 75%;
+			}
 		}
+
 		.header-text {
 			.flex-col();
 			width: 50%;
@@ -136,11 +171,15 @@ nav {
 			h1 {
 				.h1-6();
 				font-size: 8rem;
+				text-align: center;
 			}
 
 			h2 {
 				.h1-6();
 				font-size: 4rem;
+			}
+			@media only screen and (max-width: @break-mobile) {
+				width: 100%;
 			}
 		}
 		@media only screen and (max-width: @break-tablet) {
@@ -152,7 +191,7 @@ nav {
 
 	#middle-section {
 		.flex-row();
-		align-items: flex-end;
+		align-items: center;
 		justify-content: space-between;
 		width: 100%;
 		.marg-bot();
@@ -168,7 +207,8 @@ nav {
 			}
 
 			p {
-				font-size: 2rem;
+				font-size: 3rem;
+				line-height: 1.2;
 				text-align: justify;
 			}
 		}
@@ -181,6 +221,7 @@ nav {
 
 			table {
 				.table();
+				border: none;
 
 				td,
 				th {
@@ -188,7 +229,10 @@ nav {
 				}
 
 				th {
-					font-size: 3rem;
+					font-size: 5rem;
+				}
+				td {
+					font-size: 4rem;
 				}
 			}
 		}
@@ -208,7 +252,7 @@ nav {
 		background-color: @bg-color_body;
 		color: white;
 		text-align: center;
-		width: 85%;
+		width: 90%;
 		padding: 2rem 0;
 		blockquote {
 			width: 75%;
@@ -225,7 +269,7 @@ nav {
 	#work-history {
 		font-size: 2rem;
 		margin: 3rem 0;
-		width: 85%;
+		width: 90%;
 		table-layout: fixed;
 		.marg-bot();
 
@@ -236,6 +280,19 @@ nav {
 
 		table {
 			.table();
+			th {
+				font-size: 3rem;
+			}
+		}
+	}
+
+	// LAPTOP PHOTO
+	.pic01 {
+		width: 90%;
+		position: relative;
+		.marg-bot();
+		img {
+			max-width: 100%;
 		}
 	}
 
@@ -246,12 +303,16 @@ nav {
 		align-items: center;
 		padding: 2rem 0;
 		background-color: @bg-color_navbar;
-		width: 85%;
+		width: 90%;
 		form {
 			.flex-col();
 			align-items: stretch;
 			width: 85%;
 
+			h2 {
+				.h1-6();
+				font-size: 4rem;
+			}
 			input[type='text'],
 			input[type='email'],
 			select,
@@ -290,7 +351,7 @@ nav {
 		background-color: @bg-color_footer;
 		color: white;
 		text-align: center;
-		width: 100%;
+		width: 90%;
 		padding: 5vh 0;
 		margin: 0;
 		font-size: 2rem;

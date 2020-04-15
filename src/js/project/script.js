@@ -1,3 +1,5 @@
+//SHOW NAVBAR ON SCROLL
+
 let timer;
 
 $(window).on('scroll', function () {
@@ -8,4 +10,13 @@ $(window).on('scroll', function () {
 	timer = setTimeout(function () {
 		$('nav').removeClass('show-navbar');
 	}, 1500);
+});
+
+//TOOLTIPS
+
+$(function () {
+	$(document).tooltip({
+		tooltipClass: 'uitooltip',
+		track: true,
+	});
 });
